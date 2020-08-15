@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ExerciseTypeService } from '../../../services/workouts/exercise-type.service';
 
 @Component({
   selector: 'app-exercise-type',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exercise-type.component.css']
 })
 export class ExerciseTypeComponent implements OnInit {
-
-  constructor() { }
+  types: any = [];
+  constructor(private exTypeService: ExerciseTypeService) { }
 
   ngOnInit(): void {
+    this.exTypeService.getAllExTypes().subscribe(result => {
+      this.types = result;
+    })
   }
 
 }
