@@ -1,7 +1,28 @@
+<div>
+    <span>Create one new type</span>
+    <input type="button" value="Create new type" (click)="createNewType()">
+</div>
 <div *ngIf="types && types.length > 0">
-    <ul>
-        <li *ngFor="let type of types; let i = index">
-            {{i + 1}} {{type.name}}
-        </li>
-    </ul>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let type of types; let i = index">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{type.name}}</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>

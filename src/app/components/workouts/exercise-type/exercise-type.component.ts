@@ -13,7 +13,14 @@ export class ExerciseTypeComponent implements OnInit {
   ngOnInit(): void {
     this.exTypeService.getAllExTypes().subscribe(result => {
       this.types = result;
-    })
+    });
+  }
+
+  createNewType() {
+    console.log('create new type function');
+    this.exTypeService.createExType().subscribe(result => {
+      this.types = result;
+    });
   }
 
 }
