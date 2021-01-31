@@ -1,28 +1,49 @@
-<div>
-    <span>Create one new type</span>
-    <input type="button" value="Create new type" (click)="createNewType()">
-</div>
-<div *ngIf="types && types.length > 0">
+<div class="container-fluid">
+    <div>
+        <input type="button" class="btn btn-primary" value="Create new type" (click)="createNewType(mymodal)">
+    </div>
+    <div class="row" *ngIf="ExTypes$ | async as ExTypes; else spinner">
+        <ng-container *ngIf="isListVisible(ExTypes)">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">created At</th>
 
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let type of types; let i = index">
-                    <th scope="row">{{i + 1}}</th>
-                    <td>{{type.name}}</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-            </tbody>
-        </table>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let type of ExTypes; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{type.name}}</td>
+                            <td>{{type.createdAt | date}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </ng-container>
     </div>
 
+
+    <ng-template #spinner>
+        <div class="spinner mt-5"></div>
+    </ng-template>
 </div>
+
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        This is example from ItSolutionStuff.com
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+    </div>
+</ng-template>

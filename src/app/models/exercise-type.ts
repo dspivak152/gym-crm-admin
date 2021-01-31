@@ -5,4 +5,5 @@ export class ExerciseType {
 
     name: string;
     required: boolean = true;
+    createdAt: string;
 }

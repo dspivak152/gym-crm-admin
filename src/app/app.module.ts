@@ -13,6 +13,8 @@ import { WorkoutsComponent } from './components/workouts/workouts/workouts.compo
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ExerciseTypeModalComponent } from './components/modals/exercise-type-modal/exercise-type-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,15 +25,16 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     ExercisesComponent,
     RoundsComponent,
     WorkoutTypeComponent,
-    WorkoutsComponent
+    WorkoutsComponent,
+    ExerciseTypeModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
     TooltipModule.forRoot(),
     TabsModule.forRoot()
-
   ],
   providers: [],
   bootstrap: [AppComponent]
